@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+
+<title>American Airlines flight AA 5950 schedule.</title>
+
+<link rel="stylesheet" type="text/css" href="/main.css?v=v30a" />
+
+<link rel="stylesheet" href="/static/fontello/css/language.css">
+
+
+
+<script type='text/javascript'>
+
+function toggle_details(button) {
+  target = button.parentNode.parentNode.getElementsByTagName("span")[1];
+  if (!target) {
+    target = button.parentNode.parentNode.getElementsByTagName("span")[0];
+  }
+
+  if (target.style.display == 'block') {
+    target.style.display = 'none';
+    button.innerHTML = '<i class="icon-angle-double-down"></i>'
+  } else {
+    target.style.display = 'block';
+    button.innerHTML = '<i class="icon-angle-double-up"></i>'
+  }
+}
+
+function m_date_picked(){
+  var date  = datePickerController.getSelectedDate("m_date_input")
+  goto_date(date);
+}
+
+</script>
+
+<link href="/static/datepicker/datepicker.min.css" rel="stylesheet" type="text/css" />
+<script src="/static/datepicker/datepicker.min.js"></script>
+
+
+
+ 
+
+<script type="text/javascript">
+
+function myFunction() {
+    document.getElementById("m_myDropdown").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</head>
+<body>
+<div class="desktop-v">
+
+<script type="text/javascript">
+window.google_analytics_uacct = "UA-1399788-5";
+
+
+function set_language(lang_sel) {
+  var lang = lang_sel.value;
+  set_lang(lang);
+}
+
+function set_lang(lang) {
+  if (lang == "noop") {
+    return;
+  }
+  if (lang == "en") {
+    lang = ""
+  } else {
+    lang = "/" + lang
+  }
+  var url =  window.location.pathname + window.location.search;
+  currentlang = url.split("/")[1];
+  if (currentlang.length == 2 || (currentlang.length == 5 && currentlang[2] == "-") ) {
+    newurl = lang+url.substring(currentlang.length+1);
+  } else {
+    newurl = lang+url;
+  }
+  window.location = newurl;  
+}
+
+</script>
+
+  <div class="bulletedlist">
+    <ul>
+        <li><a href="http://flightmapper.net/">FlightMapper.net</a></li>
+        <li><a href="/search">Flight Search</a></li>
+        <li><a href="/countries">Countries</a></li>
+        <li><a href="/airlines">Airlines</a></li>
+        
+          <li>
+            <select name="lang_sel" onchange="set_language(this)" >
+              <option value="noop" >Language</option>
+              <option value="en" >English</option>
+              <option value="de" >Deutsch (German)</option>
+              <option value="es" >Español (Spanish)</option>
+              <option value="fr" >Française (French)</option>
+              <option value="pt" >Português (Portuguese)</option>
+              <option value="fi" >Suomi (Finnish)</option>
+              <option value="ja" >日本語 (Japanese)</option>
+              <option value="ko" >한국말 (Korean)</option>
+              <option value="zh-CN" >简体中文 (Chinese,Simplified)</option>
+              <option value="zh-TW" >繁體中文 (Chinese,Traditional)</option>
+            </select>
+          </li>
+        
+    </ul>
+  </div>
+
+
+  
+  
+  <h1><a href="http://www.aa.com" rel="nofollow" target="_blank"
+    onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Airline', 'http://www.aa.com']);" >American Airlines</a>
+  flight
+  AA 5950:
+    Multiple routes</h1>
+
+
+<div class="frames-container">
+  <div class="fancy-frame-as"> 
+    
+   <div class="as_box">
+    
+    <script type="text/javascript"><!--
+      google_ad_client = "ca-pub-1696390984060991";
+      google_ad_slot = "1220564027";
+      google_ad_width = 336;
+      google_ad_height = 280;
+      //-->
+    </script>
+    <script type="text/javascript"
+      src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+   
+   </div> 
+  </div> 
+  <div class="fancy-frame-in">
+    
+  <div id="map">
+  
+  
+   <div style="width: 435px; height: 280px; background-image: url(//maps.google.com/maps/api/staticmap?size=435x280&amp;markers=icon:http://info.flightmapper.net/e.png|31.801111,-106.398611&amp;markers=icon:http://info.flightmapper.net/v.png|35.392222,-97.601667&amp;markers=icon:http://info.flightmapper.net/v.png|33.435278,-112.011944&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|31.801111,-106.398611&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|35.392222,-97.601667&amp;sensor=false);"></div>
+   </div>
+  </div> 
+</div>
+
+
+
+<script>
+
+function get_url_parameter(name) {
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+
+var old_day;
+var old_month;
+var old_year;
+
+function on_load_flightlist() {
+  var old_date = get_url_parameter("date");
+  if (old_date.split("-").length === 3) {
+    old_day   = parseInt(old_date.split("-")[2], 10);
+    old_month = parseInt(old_date.split("-")[1], 10) - 1;
+    old_year  = parseInt(old_date.split("-")[0], 10);
+  } else {
+    var currentTime = new Date();
+    old_day   = currentTime.getDate();
+    old_month = currentTime.getMonth();
+    old_year  = currentTime.getFullYear();
+  }
+  
+  datePickerController.setSelectedDate("m_date_input", new Date(old_year, old_month, old_day))
+  datePickerController.setSelectedDate("d_date_input", new Date(old_year, old_month, old_day))
+  
+  set_date_texts(); 
+}
+
+window.onload = on_load_flightlist;
+
+function get_query_without_date() {
+  query = [];
+  old_query_parts = window.location.search.split("&"); 
+  for (part in old_query_parts) {
+    part = old_query_parts[part];
+    if ( part.indexOf("date=") == 0 && part.indexOf("page=") == 0) {
+      query.push(part);
+    }
+  }
+  return query.join("&");
+}
+
+function reset_date(){
+  window.location = window.location.pathname;
+}
+
+function goto_date(date) {
+  var day   = date.getDate();
+  var month = date.getMonth();
+  var year  = date.getFullYear();
+
+  var query_str = get_query_without_date();
+  if (query_str == "") {
+    query_str += "?date=" + year +"-"+ (month+1) +"-"+ day;
+  } else {
+    query_str += "&date=" + year +"-"+ (month+1) +"-"+ day;
+  }
+
+  window.location = query_str;	
+}
+
+function d_date_picked(){
+  var date  = datePickerController.getSelectedDate("d_date_input")
+  goto_date(date);
+}
+
+</script>
+
+<form action="#">
+<div class="datepicker">
+ <div style="padding: 5px 5px 5px 15px;">
+ <img style="vertical-align: bottom; padding: 0 0 0 0; margin: 0 0 0 0" src="/static/date_arrow.png">
+ <b>Select flight date:</b>
+
+  <input type="text" size="10" id="d_date_input" name="d_date_input" />
+
+  <input type="submit" value="Search" onclick="d_date_picked(); return false;" >
+  
+
+  <script>  
+    datePickerController.createDatePicker({
+      formElements:{ "d_date_input":"%Y-%m-%d"},
+      rangeLow:"20180401",
+      rangeHigh:"20190131"
+    });
+  </script>
+
+ </div>
+</div>
+</form>
+
+<div class="flightlist"><table>
+       <tr><th class="main">
+          FLIGHT SCHEDULE
+       </th></tr>
+          <tr><th class="sub">Direct Flights:
+            </th></tr>
+         <tr class="odd">
+<td style="padding: 4px 4px 4px 4px">Daily 
+08:35 
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
+12:51 
+<a href="/airport/OKC">Oklahoma City (OKC)</a> <br>
+AA 5950
+Non-stop Canadair CRJ 900 (CR9) 2:16
+Effective 2018-04-03 through 2018-05-03</td>
+</tr>
+          <tr class="even">
+<td style="padding: 4px 4px 4px 4px">Daily 
+12:10 
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
+16:18 
+<a href="/airport/OKC">Oklahoma City (OKC)</a> <br>
+AA 5950
+Non-stop Canadair CRJ 900 (CR9) 2:08
+Effective 2018-05-04 through 2018-06-06</td>
+</tr>
+          <tr class="odd">
+<td style="padding: 4px 4px 4px 4px">Daily 
+13:21 
+<a href="/airport/OKC">Oklahoma City (OKC)</a>  
+13:55 
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4<br>
+AA 5950
+Non-stop Canadair CRJ 900 (CR9) 2:34
+Effective 2018-04-03 through 2018-05-03</td>
+</tr>
+          <tr class="even">
+<td style="padding: 4px 4px 4px 4px">Daily 
+18:46 
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
+21:01 
+<a href="/airport/ELP">El Paso (ELP)</a> <br>
+AA 5950
+Non-stop Canadair CRJ 900 (CR9) 1:15
+Valid until 2018-04-02</td>
+</tr>
+       </table>
+   
+</div>
+
+
+ 
+ 
+<div class="as_flat">
+ 
+  <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-1696390984060991";
+    google_ad_slot = "1377413384";
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //-->
+  </script>
+  <script type="text/javascript"
+    src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+ 
+</div>
+
+
+
+<script>
+
+function last_x_from_date(x, date) {
+  for (i=0;i<7;i++) {
+    if (date.getDay() == x){
+      return date;
+    }
+    date.setDate(date.getDate()-1);
+  }
+  return null;
+}
+
+var d = new Date();
+var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+
+function has_dst(dst) {
+  time = new Date(utc);
+  if (dst == "E") {
+    var last_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 31)); // 2=mar, 0=sun
+    var last_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 31)); // 9=oct, 0=sun
+    return (time > last_sun_of_mar && time < last_sun_of_oct)
+  }
+  if (dst == "A") {
+    var second_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 14)); // 2=mar, 0=sun
+    var first_sun_of_nov  = last_x_from_date(0, new Date(time.getFullYear(), 10, 7)); // 10=nov, 0=sun
+    return (time > second_sun_of_mar && time < first_sun_of_nov)
+  }
+  if (dst == "B") {
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    var last_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 31));
+    return (time > first_sun_of_apr && time < last_sun_of_oct)
+  }
+  if (dst == "S") {
+    var third_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 21));
+    var third_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 21));
+    return (time > third_sun_of_oct || time < third_sun_of_mar)
+  }
+  if (dst == "T") {
+    var third_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 21));
+    var third_sun_of_feb = last_x_from_date(0, new Date(time.getFullYear(), 1, 21));
+    return (time > third_sun_of_oct || time < third_sun_of_feb)
+  }
+  if (dst == "O") {
+    var first_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 7));
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    return (time > first_sun_of_oct || time < first_sun_of_apr)
+  }
+  if (dst == "Z") {
+    var last_sun_of_sep = last_x_from_date(0, new Date(time.getFullYear(), 8, 30));
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    return (time > last_sun_of_sep || time < first_sun_of_apr)
+  }
+  return false
+}
+
+
+function get_current_time(timezone, dst) {
+  if (has_dst(dst)) {
+    localt = utc + 3600000*(timezone+1)
+  } else {
+    localt = utc + 3600000*timezone
+  }
+  return new Date(localt);
+}
+
+function format_time(date) {
+  hour = date.getHours();
+  mins = date.getMinutes();
+  var ap = "am";
+  if (hour   > 11) { ap = "pm";        }
+  if (hour   > 12) { hour = hour - 12; }
+  if (hour   == 0) { hour = 12;        }
+  if (mins < 10) {
+    return hour+":0"+mins+ap;
+  }
+  return hour+":"+mins+ap;
+} 
+
+function set_inner_htmls(objects, html) {
+  for (i=0; i < objects.length;i++) {
+    o = objects[i];
+    o.innerHTML = html;
+  }
+}
+
+function set_date_texts() {
+  
+} 
+ 
+
+</script>
+
+
+<div class="textlist">
+
+  This flight number is listed as serving the following routes:
+  <ul>
+  
+        <li>
+          Sky Harbor, Phoenix (PHX) - El Paso (ELP)
+        </li>
+        <li>
+          Sky Harbor, Phoenix (PHX) - Oklahoma City (OKC)
+        </li>
+  </ul>
+ 
+</div>
+
+<div class="bulletedlist">
+    <ul>
+        <li>
+          <a href="/airline/AA">All American Airlines flights</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="footerlinks">
+<br>
+<br>
+<a href="/feedback">Feedback</a> - 
+<a href="/disclaimer">Disclaimer</a> - 
+<a href="/privacy">Privacy</a>
+
+</div>
+
+ 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1399788-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+ 
+
+
+</div>
+
+<div class="mobile-v">
+
+  <div class="m-box m-header">
+    <img class="m-logo" height="42px" src="/static/m-logo.png">
+
+    <div class="m-menubutton">
+
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn"><i class="icon-menu dropbtn"></i></button>
+        <div id="m_myDropdown" class="dropdown-content">
+          <a href="http://flightmapper.net/">FlightMapper.net</a>
+          <a href="/search">Flight Search</a>
+          <a href="/countries">Countries</a>
+          <a href="/airlines">Airlines</a>
+          
+            <div class="m-langbox">
+              <div class="m-lang">
+                <div class="centered"><b>LANGUAGES</b></div>
+                <ul>
+                  <li><a href="#" onclick="set_lang(&quot;en&quot;);return false;">English</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;de&quot;);return false;">Deutsch (German)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;es&quot;);return false;">Español (Spanish)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;fr&quot;);return false;">Française (French)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;pt&quot;);return false;">Português (Portuguese)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;fi&quot;);return false;">Suomi (Finnish)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;ja&quot;);return false;">日本語 (Japanese)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;ko&quot;);return false;">한국말 (Korean)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;zh-CN&quot;);return false;">简体中文 (Chinese,Simplified)</a></li>
+                  <li><a href="#" onclick="set_lang(&quot;zh-TW&quot;);return false;">繁體中文 (Chinese,Traditional)</a></li>
+
+                </ul>
+              </div>
+
+            </div>
+           
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="m-box m-title">
+    <a href="http://www.aa.com" rel="nofollow" target="_blank"
+      onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Airline', 'http://www.aa.com']);" >American Airlines</a>
+    flight
+    AA 5950:
+      Multiple routes</div>
+
+  <div class="m-box">
+    
+  <div style="height: 230px">
+  
+   <div style="width: 320px; height: 230px; margin: 0 auto; background-size: 320px 230px; background-image: url(//maps.google.com/maps/api/staticmap?size=320x230&scale=2&amp;markers=icon:http://info.flightmapper.net/e.png|31.801111,-106.398611&amp;markers=icon:http://info.flightmapper.net/v.png|35.392222,-97.601667&amp;markers=icon:http://info.flightmapper.net/v.png|33.435278,-112.011944&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|31.801111,-106.398611&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|35.392222,-97.601667&amp;sensor=false);"></div>
+   </div>
+  </div>
+
+  
+  <div class="m-box"><div class="as_mobi_flat">
+<div class="as_mobi_flat_inner">
+  
+<script type="text/javascript">
+    google_ad_client = "ca-pub-1696390984060991";
+    google_ad_slot = "6074960173";
+    google_ad_width = 320;
+    google_ad_height = 100;
+</script>
+<!-- M FlightWNum Top Flat -->
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  
+</div>  
+</div> 
+  </div>
+ 
+
+ 
+<div class="m-box m-datepicker">
+<form action="#">
+ <div style="padding: 5px 5px 5px 15px;">
+ <b>Select flight date:</b>
+
+  <!-- <input type="text" size="10" id="datepicker_m"> -->
+  <input type="text" size="10" id="m_date_input" name="m_date_input" />
+
+  <input type="submit" value="Search" onclick="m_date_picked(); return false;" >
+  
+
+
+  <script>  
+    // Attach a datepicker to the above input element
+    datePickerController.createDatePicker({
+      // formElements:{ "m_date_input":"%d.%m.%Y"},
+      formElements:{ "m_date_input":"%Y-%m-%d"},
+      rangeLow:"20180401",
+      rangeHigh:"20190131"
+    });
+  </script>
+ </div>
+</form>
+</div>
+
+
+
+<div class="m-box"><div class="centered"><b>FLIGHT SCHEDULE</b>
+  </div>
+      <div class="centered"><b>Direct Flights:</b></div>
+      <hr>    
+  <div class="m-coll">
+  <div class="m-right-open">
+    <button onclick="toggle_details(this)" class="openbtn"><i class="icon-angle-double-down"></i></button>
+  </div>
+
+  <div class="m-scbox">
+    American Airlines AA5950
+  </div>
+  <div class="m-scbox">
+  	<div class="m-arrow">
+	  <!-- <img width="32px" src="/static/m-landing.png" /> -->
+	  <i class="icon-flying"></i>
+	</div>
+	<div class="m-sc">
+		<div class="m-time">08:35</div> 
+		<div class="inline">
+			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
+		</div><br>
+
+		<div class="m-time">12:51</div>
+		<div class="inline">
+			<a href="/airport/OKC">Oklahoma City (OKC)</a> <i class="icon-terminal"></i>
+		</div>
+	</div>
+  </div>
+  <div class="m-infobox">
+     
+      Effective 2018-04-03 through 2018-05-03<br>
+    </div>
+  <div class="centered">
+    	<div class="m-weekday">Mon<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Tue<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Wed<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Thu<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
+  </div>  
+
+  <div>
+   <span class="m-detailbox">Duration: 2:16, non-stop <br>
+    Canadair CRJ 900 (CR9)<br></span>
+  </div>
+
+ </div> <hr> <div class="m-coll">
+  <div class="m-right-open">
+    <button onclick="toggle_details(this)" class="openbtn"><i class="icon-angle-double-down"></i></button>
+  </div>
+
+  <div class="m-scbox">
+    American Airlines AA5950
+  </div>
+  <div class="m-scbox">
+  	<div class="m-arrow">
+	  <!-- <img width="32px" src="/static/m-landing.png" /> -->
+	  <i class="icon-flying"></i>
+	</div>
+	<div class="m-sc">
+		<div class="m-time">12:10</div> 
+		<div class="inline">
+			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
+		</div><br>
+
+		<div class="m-time">16:18</div>
+		<div class="inline">
+			<a href="/airport/OKC">Oklahoma City (OKC)</a> <i class="icon-terminal"></i>
+		</div>
+	</div>
+  </div>
+  <div class="m-infobox">
+     
+      Effective 2018-05-04 through 2018-06-06<br>
+    </div>
+  <div class="centered">
+    	<div class="m-weekday">Mon<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Tue<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Wed<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Thu<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
+  </div>  
+
+  <div>
+   <span class="m-detailbox">Duration: 2:08, non-stop <br>
+    Canadair CRJ 900 (CR9)<br></span>
+  </div>
+
+ </div> <hr> <div class="m-coll">
+  <div class="m-right-open">
+    <button onclick="toggle_details(this)" class="openbtn"><i class="icon-angle-double-down"></i></button>
+  </div>
+
+  <div class="m-scbox">
+    American Airlines AA5950
+  </div>
+  <div class="m-scbox">
+  	<div class="m-arrow">
+	  <!-- <img width="32px" src="/static/m-landing.png" /> -->
+	  <i class="icon-flying"></i>
+	</div>
+	<div class="m-sc">
+		<div class="m-time">13:21</div> 
+		<div class="inline">
+			<a href="/airport/OKC">Oklahoma City (OKC)</a> <i class="icon-terminal"></i>
+		</div><br>
+
+		<div class="m-time">13:55</div>
+		<div class="inline">
+			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
+		</div>
+	</div>
+  </div>
+  <div class="m-infobox">
+     
+      Effective 2018-04-03 through 2018-05-03<br>
+    </div>
+  <div class="centered">
+    	<div class="m-weekday">Mon<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Tue<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Wed<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Thu<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
+  </div>  
+
+  <div>
+   <span class="m-detailbox">Duration: 2:34, non-stop <br>
+    Canadair CRJ 900 (CR9)<br></span>
+  </div>
+
+ </div> <hr> <div class="m-coll">
+  <div class="m-right-open">
+    <button onclick="toggle_details(this)" class="openbtn"><i class="icon-angle-double-down"></i></button>
+  </div>
+
+  <div class="m-scbox">
+    American Airlines AA5950
+  </div>
+  <div class="m-scbox">
+  	<div class="m-arrow">
+	  <!-- <img width="32px" src="/static/m-landing.png" /> -->
+	  <i class="icon-flying"></i>
+	</div>
+	<div class="m-sc">
+		<div class="m-time">18:46</div> 
+		<div class="inline">
+			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
+		</div><br>
+
+		<div class="m-time">21:01</div>
+		<div class="inline">
+			<a href="/airport/ELP">El Paso (ELP)</a> <i class="icon-terminal"></i>
+		</div>
+	</div>
+  </div>
+  <div class="m-infobox">
+     
+      Valid until 2018-04-02<br>
+    </div>
+  <div class="centered">
+    	<div class="m-weekday">Mon<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Tue<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Wed<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Thu<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
+    	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
+  </div>  
+
+  <div>
+   <span class="m-detailbox">Duration: 1:15, non-stop <br>
+    Canadair CRJ 900 (CR9)<br></span>
+  </div>
+
+ </div></div>
+
+  
+  <div class="m-box">
+    <div class="as_mobi_box">
+  
+<script type="text/javascript">
+    google_ad_client = "ca-pub-1696390984060991";
+    google_ad_slot = "8888825773";
+    google_ad_width = 300;
+    google_ad_height = 250;
+</script>
+<!-- M FlightWNum Bottom Box -->
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  
+</div> 
+  </div>
+ 
+
+   
+   <div class="m-box">
+     <script>
+
+function last_x_from_date(x, date) {
+  for (i=0;i<7;i++) {
+    if (date.getDay() == x){
+      return date;
+    }
+    date.setDate(date.getDate()-1);
+  }
+  return null;
+}
+
+var d = new Date();
+var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+
+function has_dst(dst) {
+  time = new Date(utc);
+  if (dst == "E") {
+    var last_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 31)); // 2=mar, 0=sun
+    var last_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 31)); // 9=oct, 0=sun
+    return (time > last_sun_of_mar && time < last_sun_of_oct)
+  }
+  if (dst == "A") {
+    var second_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 14)); // 2=mar, 0=sun
+    var first_sun_of_nov  = last_x_from_date(0, new Date(time.getFullYear(), 10, 7)); // 10=nov, 0=sun
+    return (time > second_sun_of_mar && time < first_sun_of_nov)
+  }
+  if (dst == "B") {
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    var last_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 31));
+    return (time > first_sun_of_apr && time < last_sun_of_oct)
+  }
+  if (dst == "S") {
+    var third_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 21));
+    var third_sun_of_mar = last_x_from_date(0, new Date(time.getFullYear(), 2, 21));
+    return (time > third_sun_of_oct || time < third_sun_of_mar)
+  }
+  if (dst == "T") {
+    var third_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 21));
+    var third_sun_of_feb = last_x_from_date(0, new Date(time.getFullYear(), 1, 21));
+    return (time > third_sun_of_oct || time < third_sun_of_feb)
+  }
+  if (dst == "O") {
+    var first_sun_of_oct = last_x_from_date(0, new Date(time.getFullYear(), 9, 7));
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    return (time > first_sun_of_oct || time < first_sun_of_apr)
+  }
+  if (dst == "Z") {
+    var last_sun_of_sep = last_x_from_date(0, new Date(time.getFullYear(), 8, 30));
+    var first_sun_of_apr = last_x_from_date(0, new Date(time.getFullYear(), 3, 7));
+    return (time > last_sun_of_sep || time < first_sun_of_apr)
+  }
+  return false
+}
+
+
+function get_current_time(timezone, dst) {
+  if (has_dst(dst)) {
+    localt = utc + 3600000*(timezone+1)
+  } else {
+    localt = utc + 3600000*timezone
+  }
+  return new Date(localt);
+}
+
+function format_time(date) {
+  hour = date.getHours();
+  mins = date.getMinutes();
+  var ap = "am";
+  if (hour   > 11) { ap = "pm";        }
+  if (hour   > 12) { hour = hour - 12; }
+  if (hour   == 0) { hour = 12;        }
+  if (mins < 10) {
+    return hour+":0"+mins+ap;
+  }
+  return hour+":"+mins+ap;
+} 
+
+function set_inner_htmls(objects, html) {
+  for (i=0; i < objects.length;i++) {
+    o = objects[i];
+    o.innerHTML = html;
+  }
+}
+
+function set_date_texts() {
+  
+} 
+ 
+
+</script>
+
+
+<div class="m-textlist">
+
+  This flight number is listed as serving the following routes:
+  <ul>
+  
+        <li>
+          Sky Harbor, Phoenix (PHX) - El Paso (ELP)
+        </li>
+        <li>
+          Sky Harbor, Phoenix (PHX) - Oklahoma City (OKC)
+        </li>
+  </ul>
+ 
+</div>
+   </div>
+  
+
+  <div class="m-box">
+    <div class="m-link">
+      <a href="/airline/AA"><i class="icon-right-open"></i>
+        All American Airlines flights</a>
+    </div>
+
+    </div>
+
+
+
+
+  <div class="m-box footerlinks">
+  <a href="/feedback">Feedback</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp; 
+  <a href="/disclaimer">Disclaimer</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp; 
+  <a href="/privacy">Privacy</a>
+  
+  </div>
+
+
+
+</div>
+
+
+</body>
+</html>
+
+
