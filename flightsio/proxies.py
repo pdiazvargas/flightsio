@@ -28,6 +28,7 @@ class SslProxyGenerator:
             for row in proxies_table.tbody.find_all('tr')
         ]
 
+        random.shuffle(self._proxies)
         self._proxy_gen = cycle(self._proxies)
 
     # Retrieve a random index proxy (we need the index to delete it if not working)

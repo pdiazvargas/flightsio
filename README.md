@@ -12,6 +12,9 @@ engine. The runner will parse a given set of routes from the given url endpoint
 and then it will retrieve the route information for each flight. The output
 will be writen to an `output` directory.
 
+Before running the script make sure that the output folder exists!
+
+> mkdir output
 > python runner.py
 
 ## Unit Tests
