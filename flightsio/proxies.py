@@ -1,6 +1,8 @@
+import time
 import random
 import requests
 
+from flightsio.constants import MAX_RETRIES
 from itertools import cycle
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
@@ -32,12 +34,56 @@ class SslProxyGenerator:
         self._proxy_gen = cycle(self._proxies)
 
     # Retrieve a random index proxy (we need the index to delete it if not working)
-    def get_proxy(self):
+    def get_ip(self):
         return next(self._proxy_gen)
 
+
+class ProxyRequest:
+
+    REQUEST_MAX_COUNT = 10
+
+    def __init__(self):
+        self._proxy_gen = SslProxyGenerator()
+        self._reset_ip()
+
+    @property
+    def ip(self):
+        return self._current_ip
+
+    def _get_ip(self):
+
+        if self._request_count == self.REQUEST_MAX_COUNT:
+            print(f'Used "{self._current_ip}"" {self._request_count} times.')
+            self._reset_ip()
+
+        self._request_count += 1
+        return self._current_ip
+
+    def _reset_ip(self):
+        self._request_count = 0
+        self._current_ip = self._proxy_gen.get_ip()
+
+    def get(self, url, retries=MAX_RETRIES):
+
+        # Make a request to the flights endpoint to get the routes available between
+        # the two airports.
+        ip_addr = self._get_ip()
+        response = requests.get(url, proxies={'https': ip_addr})
+
+        if retries == 0:
+            print(f'Exhausted the number of retries for "{url}"')
+            return response
+
+        if response.status_code == requests.codes.forbidden:
+            print(f'Found catpcha, retrying with new IP {ip_addr}. Sleeping for a while...')
+            self._reset_ip()
+            time.sleep(5)
+            return self.get(url, retries - 1)
+
+        return response
 
 if __name__ == '__main__':
     import requests
 
     p = SslProxyGenerator()
-    print(p.get_proxy())
+    print(p.get_ip())
