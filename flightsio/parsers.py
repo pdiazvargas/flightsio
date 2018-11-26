@@ -1,5 +1,19 @@
-from flightsio.constants import ROUTE_FIELDS
+import random
 from bs4 import BeautifulSoup
+
+from flightsio.constants import ROUTE_FIELDS
+
+
+def parse_destinations(destinations_html):
+
+    soup = BeautifulSoup(destinations_html, 'html.parser')
+    links = [link for link in soup.find_all('a') if '/airport/' in link.get('href')]
+    random.shuffle(links)
+
+    return {
+        link.text: 'https://info.flightmapper.net' + link.get('href')
+        for link in links
+    }
 
 
 def parse_flight_list(flights_html):
@@ -17,18 +31,22 @@ def parse_flight_list(flights_html):
     soup = BeautifulSoup(flights_html, 'html.parser')
 
     return {
-        link.text: 'http://info.flightmapper.net' + link.get('href')
+        link.text: 'https://info.flightmapper.net' + link.get('href')
         for link in soup.find_all('a') if '/flight/' in link.get('href')
     }
 
 
-def parse_flight_routes(flight_html):
+def parse_flight_routes(flight, flight_url, flight_html):
 
     soup = BeautifulSoup(flight_html, 'html.parser')
 
     def get_flight_info(flight_rec):
         data = flight_rec.text.strip().split('\n')
 
-        return {field: data[i] for i, field in enumerate(ROUTE_FIELDS)}
+        if len(data) < len(ROUTE_FIELDS):
+            data.append('')
+
+        info = {field: data[i] for i, field in enumerate(ROUTE_FIELDS)}
+        return {'flight': flight, **info, 'url': flight_url}
 
     return [get_flight_info(rec) for rec in soup.find_all('tr') if len(rec.find_all('td'))]

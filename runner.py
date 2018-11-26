@@ -1,59 +1,40 @@
 import time
 import json
-import requests
+import os
 
-from itertools import cycle
-from bs4 import BeautifulSoup
-
-from flightsio.proxies import ProxyRequest
-from flightsio.parsers import (parse_flight_list, parse_flight_routes)
-from flightsio.constants import MAX_RETRIES, SLEEP_INTERVALS, CAPTCHA
+from flightsio.scraper import FlightScraper
 
 
-def run(source_url):
+def run(source_airport):
 
-    # The object used to get a set of IP addressed. These will be used as a proxy
-    # when making a request to the flight endpoint.
-    proxy_request = ProxyRequest()
+    scraper = FlightScraper()
+    base_airport_url = os.path.join('.', 'output', source_airport)
 
-    # Make a request to the flights endpoint to get the routes available between
-    # the two airports.
-    response = proxy_request.get(source_url)
+    for destination, routes in scraper.get_routes(source_airport):
+        airport_path = os.path.join('.', 'output', source_airport)
+        os.makedirs(airport_path, exist_ok=True)
+        write_csv(airport_path, destination, routes)
 
-    if response.status_code != requests.codes.ok:
-        print(f'Unable to make a request to: "{source_url}"')
-        print(response.content)
+
+def write_csv(path, destination, routes):
+
+    if not len(routes):
+        print(f'{flight} has no routes. Nothing to write.')
         return
 
-    flights = parse_flight_list(response.content)
-    sleep_interval = cycle(SLEEP_INTERVALS)
-
-    # Iterate over the set of routes, make a request to each url and write the
-    # output in json format.
-    for flight, flight_url in flights.items():
-        sleep_time = next(sleep_interval)
-
-        print(f'"{flight}:15" "{proxy_request.ip}:20" sleeping for {sleep_time} secs')
-        response = proxy_request.get(flight_url)
-
-        if response.status_code != requests.codes.ok:
-            import pdb; pdb.set_trace()
-            print('Unable to make request. Response was:\n')
-            print(response.content.decode())
-            continue
-
-        flight_routes = parse_flight_routes(response.content.decode())
-        writer(flight, flight_routes)
-
-        sleep_time = next(sleep_interval)
-        time.sleep(sleep_time)
+    header = ','.join(routes[0])
+    with open(os.path.join(path, f'{destination}.csv'), 'w') as f:
+        f.write(header + '\n')
+        for route in routes:
+            row = ','.join((v.strip().replace(',', ' ') for v in route.values()))
+            f.write(row + '\n')
 
 
-def writer(flight, routes):
+def write_json(destination_path, flight, routes):
 
-    with open(f'./output/{flight}.json', 'w') as f:
+    with open(os.path.join(destination_path, f'{flight}.json'), 'w') as f:
         f.write(json.dumps(routes, indent=4))
 
+
 if __name__ == '__main__':
-    source_url = 'http://info.flightmapper.net/airport/PHX/OKC'
-    run(source_url)
+    run('PHX')

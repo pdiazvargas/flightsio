@@ -43,7 +43,7 @@ function m_date_picked(){
 
 
 
- 
+
 
 <script type="text/javascript">
 
@@ -96,7 +96,7 @@ function set_lang(lang) {
   } else {
     newurl = lang+url;
   }
-  window.location = newurl;  
+  window.location = newurl;
 }
 
 </script>
@@ -107,7 +107,7 @@ function set_lang(lang) {
         <li><a href="/search">Flight Search</a></li>
         <li><a href="/countries">Countries</a></li>
         <li><a href="/airlines">Airlines</a></li>
-        
+
           <li>
             <select name="lang_sel" onchange="set_language(this)" >
               <option value="noop" >Language</option>
@@ -123,13 +123,13 @@ function set_lang(lang) {
               <option value="zh-TW" >繁體中文 (Chinese,Traditional)</option>
             </select>
           </li>
-        
+
     </ul>
   </div>
 
 
-  
-  
+
+
   <h1><a href="http://www.aa.com" rel="nofollow" target="_blank"
     onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Airline', 'http://www.aa.com']);" >American Airlines</a>
   flight
@@ -138,10 +138,10 @@ function set_lang(lang) {
 
 
 <div class="frames-container">
-  <div class="fancy-frame-as"> 
-    
+  <div class="fancy-frame-as">
+
    <div class="as_box">
-    
+
     <script type="text/javascript"><!--
       google_ad_client = "ca-pub-1696390984060991";
       google_ad_slot = "1220564027";
@@ -152,17 +152,17 @@ function set_lang(lang) {
     <script type="text/javascript"
       src="//pagead2.googlesyndication.com/pagead/show_ads.js">
     </script>
-   
-   </div> 
-  </div> 
+
+   </div>
+  </div>
   <div class="fancy-frame-in">
-    
+
   <div id="map">
-  
-  
+
+
    <div style="width: 435px; height: 280px; background-image: url(//maps.google.com/maps/api/staticmap?size=435x280&amp;markers=icon:http://info.flightmapper.net/e.png|31.801111,-106.398611&amp;markers=icon:http://info.flightmapper.net/v.png|35.392222,-97.601667&amp;markers=icon:http://info.flightmapper.net/v.png|33.435278,-112.011944&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|31.801111,-106.398611&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|35.392222,-97.601667&amp;sensor=false);"></div>
    </div>
-  </div> 
+  </div>
 </div>
 
 
@@ -195,18 +195,18 @@ function on_load_flightlist() {
     old_month = currentTime.getMonth();
     old_year  = currentTime.getFullYear();
   }
-  
+
   datePickerController.setSelectedDate("m_date_input", new Date(old_year, old_month, old_day))
   datePickerController.setSelectedDate("d_date_input", new Date(old_year, old_month, old_day))
-  
-  set_date_texts(); 
+
+  set_date_texts();
 }
 
 window.onload = on_load_flightlist;
 
 function get_query_without_date() {
   query = [];
-  old_query_parts = window.location.search.split("&"); 
+  old_query_parts = window.location.search.split("&");
   for (part in old_query_parts) {
     part = old_query_parts[part];
     if ( part.indexOf("date=") == 0 && part.indexOf("page=") == 0) {
@@ -232,7 +232,7 @@ function goto_date(date) {
     query_str += "&date=" + year +"-"+ (month+1) +"-"+ day;
   }
 
-  window.location = query_str;	
+  window.location = query_str;
 }
 
 function d_date_picked(){
@@ -251,9 +251,9 @@ function d_date_picked(){
   <input type="text" size="10" id="d_date_input" name="d_date_input" />
 
   <input type="submit" value="Search" onclick="d_date_picked(); return false;" >
-  
 
-  <script>  
+
+  <script>
     datePickerController.createDatePicker({
       formElements:{ "d_date_input":"%Y-%m-%d"},
       rangeLow:"20180401",
@@ -272,54 +272,53 @@ function d_date_picked(){
           <tr><th class="sub">Direct Flights:
             </th></tr>
          <tr class="odd">
-<td style="padding: 4px 4px 4px 4px">Daily 
-08:35 
-<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
-12:51 
+<td style="padding: 4px 4px 4px 4px">Daily
+08:35
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4
+12:51
 <a href="/airport/OKC">Oklahoma City (OKC)</a> <br>
 AA 5950
 Non-stop Canadair CRJ 900 (CR9) 2:16
 Effective 2018-04-03 through 2018-05-03</td>
 </tr>
           <tr class="even">
-<td style="padding: 4px 4px 4px 4px">Daily 
-12:10 
-<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
-16:18 
+<td style="padding: 4px 4px 4px 4px">Daily
+12:10
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4
+16:18
 <a href="/airport/OKC">Oklahoma City (OKC)</a> <br>
 AA 5950
 Non-stop Canadair CRJ 900 (CR9) 2:08
 Effective 2018-05-04 through 2018-06-06</td>
 </tr>
           <tr class="odd">
-<td style="padding: 4px 4px 4px 4px">Daily 
-13:21 
-<a href="/airport/OKC">Oklahoma City (OKC)</a>  
-13:55 
+<td style="padding: 4px 4px 4px 4px">Daily
+13:21
+<a href="/airport/OKC">Oklahoma City (OKC)</a>
+13:55
 <a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4<br>
 AA 5950
 Non-stop Canadair CRJ 900 (CR9) 2:34
 Effective 2018-04-03 through 2018-05-03</td>
 </tr>
           <tr class="even">
-<td style="padding: 4px 4px 4px 4px">Daily 
-18:46 
-<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4 
-21:01 
+<td style="padding: 4px 4px 4px 4px">Daily
+18:46
+<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> 4
+21:01
 <a href="/airport/ELP">El Paso (ELP)</a> <br>
 AA 5950
-Non-stop Canadair CRJ 900 (CR9) 1:15
-Valid until 2018-04-02</td>
+Non-stop Canadair CRJ 900 (CR9) 1:15</td>
 </tr>
        </table>
-   
+
 </div>
 
 
- 
- 
+
+
 <div class="as_flat">
- 
+
   <script type="text/javascript"><!--
     google_ad_client = "ca-pub-1696390984060991";
     google_ad_slot = "1377413384";
@@ -330,7 +329,7 @@ Valid until 2018-04-02</td>
   <script type="text/javascript"
     src="//pagead2.googlesyndication.com/pagead/show_ads.js">
   </script>
- 
+
 </div>
 
 
@@ -411,7 +410,7 @@ function format_time(date) {
     return hour+":0"+mins+ap;
   }
   return hour+":"+mins+ap;
-} 
+}
 
 function set_inner_htmls(objects, html) {
   for (i=0; i < objects.length;i++) {
@@ -421,9 +420,9 @@ function set_inner_htmls(objects, html) {
 }
 
 function set_date_texts() {
-  
-} 
- 
+
+}
+
 
 </script>
 
@@ -432,7 +431,7 @@ function set_date_texts() {
 
   This flight number is listed as serving the following routes:
   <ul>
-  
+
         <li>
           Sky Harbor, Phoenix (PHX) - El Paso (ELP)
         </li>
@@ -440,7 +439,7 @@ function set_date_texts() {
           Sky Harbor, Phoenix (PHX) - Oklahoma City (OKC)
         </li>
   </ul>
- 
+
 </div>
 
 <div class="bulletedlist">
@@ -448,7 +447,7 @@ function set_date_texts() {
         <li>
           <a href="/airline/AA">All American Airlines flights</a>
         </li>
-        
+
     </ul>
 </div>
 
@@ -457,13 +456,13 @@ function set_date_texts() {
 <div class="footerlinks">
 <br>
 <br>
-<a href="/feedback">Feedback</a> - 
-<a href="/disclaimer">Disclaimer</a> - 
+<a href="/feedback">Feedback</a> -
+<a href="/disclaimer">Disclaimer</a> -
 <a href="/privacy">Privacy</a>
 
 </div>
 
- 
+
 
 <script type="text/javascript">
 
@@ -478,7 +477,7 @@ function set_date_texts() {
   })();
 
 </script>
- 
+
 
 
 </div>
@@ -497,7 +496,7 @@ function set_date_texts() {
           <a href="/search">Flight Search</a>
           <a href="/countries">Countries</a>
           <a href="/airlines">Airlines</a>
-          
+
             <div class="m-langbox">
               <div class="m-lang">
                 <div class="centered"><b>LANGUAGES</b></div>
@@ -517,7 +516,7 @@ function set_date_texts() {
               </div>
 
             </div>
-           
+
 
         </div>
       </div>
@@ -536,17 +535,17 @@ function set_date_texts() {
       Multiple routes</div>
 
   <div class="m-box">
-    
+
   <div style="height: 230px">
-  
+
    <div style="width: 320px; height: 230px; margin: 0 auto; background-size: 320px 230px; background-image: url(//maps.google.com/maps/api/staticmap?size=320x230&scale=2&amp;markers=icon:http://info.flightmapper.net/e.png|31.801111,-106.398611&amp;markers=icon:http://info.flightmapper.net/v.png|35.392222,-97.601667&amp;markers=icon:http://info.flightmapper.net/v.png|33.435278,-112.011944&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|31.801111,-106.398611&amp;path=color:0xff0000ff|weight:2|33.435278,-112.011944|35.392222,-97.601667&amp;sensor=false);"></div>
    </div>
   </div>
 
-  
+
   <div class="m-box"><div class="as_mobi_flat">
 <div class="as_mobi_flat_inner">
-  
+
 <script type="text/javascript">
     google_ad_client = "ca-pub-1696390984060991";
     google_ad_slot = "6074960173";
@@ -557,13 +556,13 @@ function set_date_texts() {
 <script type="text/javascript"
 src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-  
-</div>  
-</div> 
-  </div>
- 
 
- 
+</div>
+</div>
+  </div>
+
+
+
 <div class="m-box m-datepicker">
 <form action="#">
  <div style="padding: 5px 5px 5px 15px;">
@@ -573,10 +572,10 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
   <input type="text" size="10" id="m_date_input" name="m_date_input" />
 
   <input type="submit" value="Search" onclick="m_date_picked(); return false;" >
-  
 
 
-  <script>  
+
+  <script>
     // Attach a datepicker to the above input element
     datePickerController.createDatePicker({
       // formElements:{ "m_date_input":"%d.%m.%Y"},
@@ -594,7 +593,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="m-box"><div class="centered"><b>FLIGHT SCHEDULE</b>
   </div>
       <div class="centered"><b>Direct Flights:</b></div>
-      <hr>    
+      <hr>
   <div class="m-coll">
   <div class="m-right-open">
     <button onclick="toggle_details(this)" class="openbtn"><i class="icon-angle-double-down"></i></button>
@@ -609,7 +608,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	  <i class="icon-flying"></i>
 	</div>
 	<div class="m-sc">
-		<div class="m-time">08:35</div> 
+		<div class="m-time">08:35</div>
 		<div class="inline">
 			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
 		</div><br>
@@ -621,7 +620,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	</div>
   </div>
   <div class="m-infobox">
-     
+
       Effective 2018-04-03 through 2018-05-03<br>
     </div>
   <div class="centered">
@@ -632,7 +631,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
     	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
-  </div>  
+  </div>
 
   <div>
    <span class="m-detailbox">Duration: 2:16, non-stop <br>
@@ -653,7 +652,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	  <i class="icon-flying"></i>
 	</div>
 	<div class="m-sc">
-		<div class="m-time">12:10</div> 
+		<div class="m-time">12:10</div>
 		<div class="inline">
 			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
 		</div><br>
@@ -665,7 +664,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	</div>
   </div>
   <div class="m-infobox">
-     
+
       Effective 2018-05-04 through 2018-06-06<br>
     </div>
   <div class="centered">
@@ -676,7 +675,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
     	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
-  </div>  
+  </div>
 
   <div>
    <span class="m-detailbox">Duration: 2:08, non-stop <br>
@@ -697,7 +696,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	  <i class="icon-flying"></i>
 	</div>
 	<div class="m-sc">
-		<div class="m-time">13:21</div> 
+		<div class="m-time">13:21</div>
 		<div class="inline">
 			<a href="/airport/OKC">Oklahoma City (OKC)</a> <i class="icon-terminal"></i>
 		</div><br>
@@ -709,7 +708,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	</div>
   </div>
   <div class="m-infobox">
-     
+
       Effective 2018-04-03 through 2018-05-03<br>
     </div>
   <div class="centered">
@@ -720,7 +719,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
     	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
-  </div>  
+  </div>
 
   <div>
    <span class="m-detailbox">Duration: 2:34, non-stop <br>
@@ -741,7 +740,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	  <i class="icon-flying"></i>
 	</div>
 	<div class="m-sc">
-		<div class="m-time">18:46</div> 
+		<div class="m-time">18:46</div>
 		<div class="inline">
 			<a href="/airport/PHX">Sky Harbor, Phoenix (PHX)</a> <i class="icon-terminal"></i>4
 		</div><br>
@@ -753,7 +752,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 	</div>
   </div>
   <div class="m-infobox">
-     
+
       Valid until 2018-04-02<br>
     </div>
   <div class="centered">
@@ -764,7 +763,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
     	<div class="m-weekday">Fri<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sat<br><font color="#408502"><i class="icon-ok"></i></font></div>
     	<div class="m-weekday">Sun<br><font color="#408502"><i class="icon-ok"></i></font></div>
-  </div>  
+  </div>
 
   <div>
    <span class="m-detailbox">Duration: 1:15, non-stop <br>
@@ -773,10 +772,10 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 
  </div></div>
 
-  
+
   <div class="m-box">
     <div class="as_mobi_box">
-  
+
 <script type="text/javascript">
     google_ad_client = "ca-pub-1696390984060991";
     google_ad_slot = "8888825773";
@@ -787,12 +786,12 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 <script type="text/javascript"
 src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-  
-</div> 
-  </div>
- 
 
-   
+</div>
+  </div>
+
+
+
    <div class="m-box">
      <script>
 
@@ -870,7 +869,7 @@ function format_time(date) {
     return hour+":0"+mins+ap;
   }
   return hour+":"+mins+ap;
-} 
+}
 
 function set_inner_htmls(objects, html) {
   for (i=0; i < objects.length;i++) {
@@ -880,9 +879,9 @@ function set_inner_htmls(objects, html) {
 }
 
 function set_date_texts() {
-  
-} 
- 
+
+}
+
 
 </script>
 
@@ -891,7 +890,7 @@ function set_date_texts() {
 
   This flight number is listed as serving the following routes:
   <ul>
-  
+
         <li>
           Sky Harbor, Phoenix (PHX) - El Paso (ELP)
         </li>
@@ -899,10 +898,10 @@ function set_date_texts() {
           Sky Harbor, Phoenix (PHX) - Oklahoma City (OKC)
         </li>
   </ul>
- 
+
 </div>
    </div>
-  
+
 
   <div class="m-box">
     <div class="m-link">
@@ -916,10 +915,10 @@ function set_date_texts() {
 
 
   <div class="m-box footerlinks">
-  <a href="/feedback">Feedback</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp; 
-  <a href="/disclaimer">Disclaimer</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp; 
+  <a href="/feedback">Feedback</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/disclaimer">Disclaimer</a> &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="/privacy">Privacy</a>
-  
+
   </div>
 
 
