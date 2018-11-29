@@ -68,6 +68,7 @@ class ProxyRequest:
 
         if CAPTCHA in response.content.decode():
             print(f'Captcha found on {url}')
+            print('Please visit that url and unblock the captcha! Then come back here presh the letter c and hit enter')
             import ipdb; ipdb.set_trace()
             self._reset_ip()
             return self.get(url, retries - 1)

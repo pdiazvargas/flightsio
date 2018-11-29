@@ -8,10 +8,9 @@ from flightsio.scraper import FlightScraper
 def run(source_airport):
 
     scraper = FlightScraper()
-    base_airport_url = os.path.join('.', 'output', source_airport)
+    airport_path = os.path.join('.', 'output', source_airport)
 
     for destination, routes in scraper.get_routes(source_airport):
-        airport_path = os.path.join('.', 'output', source_airport)
         os.makedirs(airport_path, exist_ok=True)
         write_csv(airport_path, destination, routes)
 
@@ -19,7 +18,7 @@ def run(source_airport):
 def write_csv(path, destination, routes):
 
     if not len(routes):
-        print(f'{flight} has no routes. Nothing to write.')
+        print(f'{destination} has no routes. Nothing to write.')
         return
 
     header = ','.join(routes[0])
