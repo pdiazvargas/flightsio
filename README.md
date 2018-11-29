@@ -5,8 +5,6 @@
 First step is to install the requirements for the project. These are defined in
 the requirements.txt file.
 
-::
-
     $ pip install -r requirements.txt
 
 The `runner.py` file has a sample run using the components of the flights.io
@@ -15,8 +13,6 @@ and then it will retrieve the route information for each flight. The output
 will be writen to an `output` directory.
 
 Before running the script make sure that the output folder exists!
-
-::
 
     $ mkdir output
     $ python runner.py
@@ -27,8 +23,6 @@ The project has a very basic set of unit tests used to develop the logic in the
 parsers. The unit tests read a given sample html file and then parse the contents
 of the file. To run the unit tests:
 
-::
-
     $ python -m pytest
 
 ## Command line
@@ -36,14 +30,10 @@ of the file. To run the unit tests:
 To dynamically invoke the functions available in flightsio, you can use the provide
 command line utility. To install the utility run the following command:
 
-::
-
     $ pip install -e .
 
 After executing the installer you should have access to the `fio` command line.
 Calling `fio` in the command line should give you an output similar to:
-
-::
 
     $ fio
     Usage: fio [OPTIONS] COMMAND [ARGS]...
