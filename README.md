@@ -6,6 +6,7 @@ First step is to install the requirements for the project. These are defined in
 the requirements.txt file.
 
 ::
+
     $ pip install -r requirements.txt
 
 The `runner.py` file has a sample run using the components of the flights.io
@@ -16,6 +17,7 @@ will be writen to an `output` directory.
 Before running the script make sure that the output folder exists!
 
 ::
+
     $ mkdir output
     $ python runner.py
 
@@ -26,6 +28,7 @@ parsers. The unit tests read a given sample html file and then parse the content
 of the file. To run the unit tests:
 
 ::
+
     $ python -m pytest
 
 ## Command line
@@ -34,12 +37,14 @@ To dynamically invoke the functions available in flightsio, you can use the prov
 command line utility. To install the utility run the following command:
 
 ::
+
     $ pip install -e .
 
 After executing the installer you should have access to the `fio` command line.
 Calling `fio` in the command line should give you an output similar to:
 
 ::
+
     $ fio
     Usage: fio [OPTIONS] COMMAND [ARGS]...
 
@@ -58,6 +63,7 @@ After installing the command line utility, you have access to the commands provi
 by fio. To explore the inputs required by each command you can use `--help` argument.
 
 ::
+
     $ fio destinations --help
     Usage: fio destinations [OPTIONS]
 
@@ -75,6 +81,7 @@ by fio. To explore the inputs required by each command you can use `--help` argu
     to have the letter code of an airport. Invoking it looks like:
 
 ::
+
     $ fio destinations --from-airport phx
     {
         "Sioux Falls": "https://info.flightmapper.net/airport/PHX/FSD",
